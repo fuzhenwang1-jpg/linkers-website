@@ -3,901 +3,100 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>联结者 L/NKERS · FDE 前沿部署</title>
+  <title>联结者 L/NKERS · FDE 前沿部署服务商</title>
   <meta name="description" content="联结者（领客思）— FDE前沿部署服务商，帮助企业找到未来用户，创造未来生活方式。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg-deep: #0f0b09;
-      --bg-warm: #1a1310;
-      --bg-card: rgba(255,245,235,0.04);
-      --glass-edge: rgba(255,200,150,0.1);
-      --glass-glow: rgba(251,146,60,0.2);
-      --amber: #F59E0B;
-      --coral: #FB7185;
-      --orange: #F97316;
-      --gold: #FBBF24;
-      --warm-teal: #2DD4BF;
-      --rose: #F43F5E;
-      --sun: #FCD34D;
-      --text: rgba(255,245,235,0.88);
-      --text-dim: rgba(255,220,200,0.5);
-      --font-en: 'Space Grotesk', sans-serif;
-      --font-zh: 'Noto Sans SC', sans-serif;
-      --max-w: 1200px;
-      --radius: 16px;
-    }
-    *,*::before,*::after { margin:0;padding:0;box-sizing:border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: var(--font-zh);
-      background: var(--bg-deep);
-      color: var(--text);
-      line-height: 1.7;
-      overflow-x: hidden;
-      min-height: 100vh;
-    }
-    body::before {
-      content:'';
-      position:fixed; top:0;left:0;width:100%;height:100%;
-      background:
-        radial-gradient(ellipse 80% 60% at 20% 20%, rgba(251,146,60,0.08) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 50% at 80% 80%, rgba(251,114,133,0.06) 0%, transparent 50%),
-        radial-gradient(ellipse 50% 40% at 50% 50%, rgba(251,191,36,0.03) 0%, transparent 50%);
-      pointer-events:none; z-index:0;
-    }
-    ::-webkit-scrollbar { width:6px; }
-    ::-webkit-scrollbar-track { background:var(--bg-deep); }
-    ::-webkit-scrollbar-thumb { background:var(--amber);border-radius:3px; }
-
-    /* ---- canvas BG ---- */
-    #bg-canvas {
-      position:fixed; top:0;left:0;width:100%;height:100%;
-      z-index:0; pointer-events:none;
-    }
-
-    /* ---- nav ---- */
-    .nav {
-      position:fixed; top:0;left:0;right:0;z-index:100;
-      background:rgba(15,11,9,0.8); backdrop-filter:blur(20px);
-      border-bottom:1px solid rgba(255,200,150,0.06);
-      height:64px;
-    }
-    .nav-inner {
-      max-width:var(--max-w); margin:0 auto; padding:0 24px;
-      height:100%; display:flex; align-items:center; justify-content:space-between;
-    }
-    .logo {
-      font-family:var(--font-en); font-weight:700; font-size:1.25rem;
-      background: linear-gradient(135deg, var(--gold), var(--orange), var(--coral));
-      -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-      letter-spacing:-0.5px;
-    }
-    .logo span { font-family:var(--font-zh); }
-    .nav-links { display:flex; align-items:center; gap:20px; }
-    .nav-links a {
-      font-size:0.85rem; color:var(--text-dim); text-decoration:none;
-      transition:color 0.3s; font-weight:400;
-    }
-    .nav-links a:hover { color:var(--gold); }
-    .nav-cta {
-      background:linear-gradient(135deg, var(--orange), var(--rose));
-      color:#0f0b09 !important; padding:8px 20px; border-radius:8px;
-      font-weight:600 !important; font-size:0.8rem !important;
-      transition:transform 0.3s, box-shadow 0.3s !important;
-    }
-    .nav-cta:hover { transform:translateY(-1px); box-shadow:0 0 30px rgba(251,146,60,0.4); }
-    .hamburger { display:none; flex-direction:column; gap:4px; cursor:pointer; background:none; border:none; padding:4px; }
-    .hamburger span { width:22px; height:2px; background:var(--text); border-radius:2px; transition:0.3s; }
-    @media(max-width:860px){
-      .nav-links {
-        display:none; position:absolute; top:64px; left:0; right:0;
-        flex-direction:column; background:rgba(15,11,9,0.95); backdrop-filter:blur(20px);
-        padding:16px 24px; gap:12px; border-bottom:1px solid rgba(255,200,150,0.06);
-      }
-      .nav-links.open { display:flex; }
-      .hamburger { display:flex; }
-    }
-
-    /* ---- container ---- */
-    .container { max-width:var(--max-w); margin:0 auto; padding:0 24px; position:relative; z-index:1; }
-
-    /* ---- section ---- */
-    .section { padding:100px 0; position:relative; z-index:1; }
-    .section-title {
-      font-family:var(--font-zh); font-weight:700; font-size:2.4rem;
-      margin-bottom:12px; line-height:1.2;
-    }
-    .section-title .grad {
-      background:linear-gradient(135deg, var(--gold), var(--orange), var(--coral));
-      -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-    }
-    .section-sub {
-      color:var(--text-dim); font-size:1.05rem; max-width:600px; margin-bottom:48px; line-height:1.7;
-    }
-
-    /* ---- hero ---- */
-    .hero {
-      min-height:100vh; display:flex; align-items:center;
-      padding:120px 0 80px; position:relative; z-index:1;
-    }
-    .hero-content { max-width:900px; }
-    .hero-tag {
-      display:inline-flex; align-items:center; gap:8px;
-      background:rgba(251,146,60,0.1); border:1px solid rgba(251,146,60,0.25);
-      padding:6px 18px; border-radius:20px; font-size:0.8rem;
-      color:var(--gold); margin-bottom:28px;
-      font-family:var(--font-en);
-    }
-    .hero-tag .dot { width:6px;height:6px;border-radius:50%;background:var(--warm-teal);animation:pulse-dot 2s infinite; }
-    @keyframes pulse-dot { 0%,100%{opacity:1;box-shadow:0 0 6px var(--warm-teal)}50%{opacity:0.3;box-shadow:none} }
-    .hero h1 {
-      font-family:var(--font-zh); font-weight:900; font-size:clamp(2.2rem,6vw,4rem);
-      line-height:1.12; margin-bottom:8px;
-    }
-    .hero h1 .line1 { color:var(--text); }
-    .hero h1 .line2 {
-      background:linear-gradient(135deg, var(--gold), var(--orange), var(--coral));
-      -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-    }
-    .hero-glow {
-      display:inline-block;
-      text-shadow:0 0 40px rgba(251,146,60,0.25), 0 0 80px rgba(251,191,36,0.1);
-    }
-    .hero p {
-      color:var(--text-dim); font-size:1.1rem; max-width:600px;
-      margin:24px 0 40px; line-height:1.8;
-    }
-    .hero-actions { display:flex; gap:16px; flex-wrap:wrap; }
-    .btn {
-      display:inline-flex; align-items:center; gap:10px;
-      padding:14px 32px; border-radius:12px; font-weight:600;
-      font-size:0.95rem; text-decoration:none; cursor:pointer;
-      transition:all 0.3s; border:none; font-family:var(--font-zh);
-    }
-    .btn-primary {
-      background:linear-gradient(135deg, var(--orange), var(--rose));
-      color:#0f0b09; box-shadow:0 0 30px rgba(251,146,60,0.3);
-    }
-    .btn-primary:hover { transform:translateY(-2px); box-shadow:0 0 50px rgba(251,146,60,0.5); }
-    .btn-glass {
-      background:rgba(255,245,235,0.06); backdrop-filter:blur(10px);
-      color:var(--text); border:1px solid rgba(255,200,150,0.12);
-    }
-    .btn-glass:hover {
-      background:rgba(255,245,235,0.1); border-color:var(--gold);
-      transform:translateY(-2px);
-    }
-    .hero-stats {
-      display:flex; gap:48px; margin-top:60px;
-      padding-top:36px; border-top:1px solid rgba(255,200,150,0.08);
-    }
-    .hero-stat { text-align:center; }
-    .hero-stat .num {
-      font-family:var(--font-en); font-size:2rem; font-weight:700;
-      background:linear-gradient(135deg, var(--gold), var(--orange));
-      -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-    }
-    .hero-stat .lbl { font-size:0.8rem; color:var(--text-dim); margin-top:2px; }
-    @media(max-width:640px){
-      .hero h1 { font-size:1.8rem; }
-      .hero-stats { gap:24px; flex-wrap:wrap; }
-      .hero-stat .num { font-size:1.4rem; }
-    }
-
-    /* ---- glass card ---- */
-    .glass {
-      background:var(--bg-card); backdrop-filter:blur(16px);
-      border:1px solid var(--glass-edge);
-      border-radius:var(--radius);
-      transition:all 0.4s;
-    }
-    .glass:hover {
-      border-color:var(--glass-glow);
-      box-shadow:0 0 30px rgba(251,146,60,0.08);
-      transform:translateY(-3px);
-    }
-
-    /* ---- grid ---- */
-    .grid-5 { display:grid; grid-template-columns:repeat(5,1fr); gap:16px; }
-    .grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
-    @media(max-width:860px){ .grid-5,.grid-4 { grid-template-columns:repeat(2,1fr); } }
-    @media(max-width:480px){ .grid-5,.grid-4 { grid-template-columns:1fr; } }
-
-    /* ---- scenario cards ---- */
-    .scenario-card {
-      background:var(--bg-card); backdrop-filter:blur(16px);
-      border:1px solid var(--glass-edge); border-radius:var(--radius);
-      padding:28px; transition:all 0.4s; cursor:default;
-      position:relative; overflow:hidden;
-    }
-    .scenario-card::before {
-      content:''; position:absolute; top:0;left:0;right:0;height:3px;
-      background:linear-gradient(90deg, var(--gold), var(--orange), var(--coral));
-      opacity:0; transition:opacity 0.4s;
-    }
-    .scenario-card:hover::before { opacity:1; }
-    .scenario-card:hover {
-      border-color:rgba(251,146,60,0.25);
-      transform:translateY(-4px);
-      box-shadow:0 8px 40px rgba(251,146,60,0.08);
-    }
-    .scenario-icon { font-size:2rem; margin-bottom:12px; }
-    .scenario-card h3 { font-size:1rem; font-weight:600; margin-bottom:6px; }
-    .scenario-card p { font-size:0.85rem; color:var(--text-dim); line-height:1.6; }
-    .scenario-price {
-      display:inline-block; margin-top:12px;
-      font-family:var(--font-en); font-weight:600; font-size:1.1rem;
-      background:linear-gradient(135deg, var(--gold), var(--orange));
-      -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-    }
-
-    /* ---- tier chain ---- */
-    .tier-chain { display:flex; flex-direction:column; gap:12px; max-width:700px; margin:0 auto; }
-    .tier-item {
-      display:flex; align-items:center; gap:20px;
-      background:var(--bg-card); backdrop-filter:blur(12px);
-      border:1px solid var(--glass-edge); border-radius:12px;
-      padding:20px 24px; transition:all 0.3s;
-    }
-    .tier-item:hover { border-color:var(--glass-glow); transform:translateX(6px); }
-    .tier-badge {
-      font-family:var(--font-en); font-weight:700; font-size:0.75rem;
-      padding:4px 12px; border-radius:6px; white-space:nowrap;
-      min-width:60px; text-align:center; border:1px solid;
-    }
-    .badge-free { background:rgba(45,212,191,0.15); color:var(--warm-teal); border-color:rgba(45,212,191,0.25); }
-    .badge-training { background:rgba(251,191,36,0.15); color:var(--gold); border-color:rgba(251,191,36,0.25); }
-    .badge-tool { background:rgba(251,114,133,0.15); color:var(--coral); border-color:rgba(251,114,133,0.25); }
-    .badge-l0 { background:rgba(251,146,60,0.15); color:var(--orange); border-color:rgba(251,146,60,0.25); }
-    .badge-l1 { background:rgba(251,191,36,0.15); color:var(--gold); border-color:rgba(251,191,36,0.25); }
-    .badge-l2 { background:rgba(251,114,133,0.15); color:var(--coral); border-color:rgba(251,114,133,0.25); }
-    .badge-l3 { background:rgba(45,212,191,0.15); color:var(--warm-teal); border-color:rgba(45,212,191,0.25); }
-    .tier-info { flex:1; }
-    .tier-info .name { font-weight:600; font-size:0.95rem; }
-    .tier-info .desc { font-size:0.8rem; color:var(--text-dim); margin-top:2px; }
-    .tier-price {
-      font-family:var(--font-en); font-weight:600; font-size:1rem;
-      color:var(--gold); white-space:nowrap;
-    }
-
-    /* ---- system card ---- */
-    .sys-card {
-      background:var(--bg-card); backdrop-filter:blur(12px);
-      border:1px solid var(--glass-edge); border-radius:var(--radius);
-      padding:24px; text-align:center; transition:all 0.4s; cursor:default;
-      position:relative; overflow:hidden;
-    }
-    .sys-card::after {
-      content:''; position:absolute; bottom:0;left:25%;right:25%;height:2px;
-      background:linear-gradient(90deg, transparent, var(--orange), transparent);
-      opacity:0; transition:opacity 0.4s;
-    }
-    .sys-card:hover::after { opacity:1; }
-    .sys-card:hover {
-      border-color:rgba(251,146,60,0.2);
-      transform:translateY(-4px);
-      box-shadow:0 8px 32px rgba(251,146,60,0.05);
-    }
-    .sys-num {
-      font-family:var(--font-en); font-size:0.75rem; font-weight:700;
-      color:var(--gold); letter-spacing:2px; margin-bottom:8px;
-    }
-    .sys-card h4 { font-size:0.95rem; font-weight:600; margin-bottom:4px; }
-    .sys-card p { font-size:0.8rem; color:var(--text-dim); }
-
-    /* ---- case card ---- */
-    .case-card {
-      display:flex; gap:24px;
-      background:var(--bg-card); backdrop-filter:blur(16px);
-      border:1px solid var(--glass-edge); border-radius:var(--radius);
-      padding:28px; transition:all 0.4s;
-    }
-    .case-card:hover {
-      border-color:rgba(251,146,60,0.15);
-      transform:translateY(-2px);
-      box-shadow:0 8px 32px rgba(251,146,60,0.05);
-    }
-    .case-info { flex:1; }
-    .case-info h3 { font-size:1.1rem; font-weight:600; margin-bottom:4px; }
-    .case-desc { font-size:0.85rem; color:var(--text-dim); margin-bottom:12px; }
-    .case-tags { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px; }
-    .case-tags span {
-      background:rgba(255,245,235,0.05); padding:4px 12px;
-      border-radius:6px; font-size:0.7rem; color:var(--text-dim);
-      border:1px solid rgba(255,200,150,0.06);
-    }
-    .case-stats { display:flex; gap:28px; }
-    .case-stat { text-align:center; }
-    .case-stat .num {
-      font-family:var(--font-en); font-size:1.2rem; font-weight:700;
-      background:linear-gradient(135deg, var(--gold), var(--orange));
-      -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-    }
-    .case-stat .lbl { font-size:0.7rem; color:var(--text-dim); }
-    @media(max-width:640px){ .case-card { flex-direction:column; } .case-stats { flex-wrap:wrap;gap:16px; } }
-
-    /* ---- FDE stats ---- */
-    .fde-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
-    .fde-card {
-      background:var(--bg-card); backdrop-filter:blur(12px);
-      border:1px solid var(--glass-edge); border-radius:var(--radius);
-      padding:28px; text-align:center; transition:all 0.4s;
-    }
-    .fde-card:hover {
-      border-color:rgba(251,146,60,0.2);
-      transform:translateY(-4px);
-      box-shadow:0 8px 40px rgba(251,146,60,0.06);
-    }
-    .fde-card .big {
-      font-family:var(--font-en); font-size:2.2rem; font-weight:700;
-      background:linear-gradient(135deg, var(--gold), var(--orange), var(--coral));
-      -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-      margin-bottom:4px;
-    }
-    .fde-card .desc { font-size:0.8rem; color:var(--text-dim); }
-    @media(max-width:860px){ .fde-grid { grid-template-columns:repeat(2,1fr); } }
-    @media(max-width:480px){ .fde-grid { grid-template-columns:1fr; } }
-
-    /* ---- member card ---- */
-    .member-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
-    .member-card {
-      background:var(--bg-card); backdrop-filter:blur(12px);
-      border:1px solid var(--glass-edge); border-radius:var(--radius);
-      padding:24px; text-align:center; transition:all 0.4s;
-    }
-    .member-card:hover {
-      border-color:rgba(251,114,133,0.25);
-      transform:translateY(-3px);
-      box-shadow:0 8px 24px rgba(251,114,133,0.05);
-    }
-    .member-icon { font-size:2rem; margin-bottom:8px; }
-    .member-card h4 { font-size:0.9rem; font-weight:600; }
-    .member-card p { font-size:0.75rem; color:var(--text-dim); margin-top:4px; }
-    .member-count {
-      font-family:var(--font-en); font-size:0.75rem; font-weight:600;
-      color:var(--coral); margin-top:8px;
-    }
-    @media(max-width:640px){ .member-grid { grid-template-columns:repeat(2,1fr); } }
-
-    /* ---- CTA banner ---- */
-    .cta-banner {
-      background:linear-gradient(135deg, rgba(251,146,60,0.08), rgba(251,114,133,0.08));
-      border:1px solid rgba(251,146,60,0.12);
-      border-radius:24px; padding:60px; text-align:center;
-      margin:0 24px; position:relative; overflow:hidden;
-    }
-    .cta-banner::before {
-      content:''; position:absolute; top:-50%;left:-50%;width:200%;height:200%;
-      background:radial-gradient(circle at 30% 70%, rgba(251,146,60,0.04) 0%, transparent 50%);
-      pointer-events:none;
-    }
-    .cta-banner h2 { font-size:1.8rem; font-weight:700; margin-bottom:12px; }
-    .cta-banner p { color:var(--text-dim); margin-bottom:28px; }
-
-    /* ---- footer ---- */
-    .footer {
-      padding:60px 24px 40px; border-top:1px solid rgba(255,200,150,0.06);
-      margin-top:80px;
-    }
-    .footer-inner { max-width:var(--max-w); margin:0 auto; }
-    .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:40px; }
-    .footer-brand h3 { font-family:var(--font-en); font-size:1.1rem; }
-    .footer-brand h3 span {
-      background:linear-gradient(135deg, var(--gold), var(--orange));
-      -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-    }
-    .footer-brand p { font-size:0.8rem; color:var(--text-dim); margin-top:8px; line-height:1.6; max-width:280px; }
-    .footer-col h4 { font-size:0.85rem; font-weight:600; margin-bottom:16px; }
-    .footer-col a {
-      display:block; font-size:0.8rem; color:var(--text-dim); text-decoration:none;
-      margin-bottom:8px; transition:color 0.3s;
-    }
-    .footer-col a:hover { color:var(--gold); }
-    .footer-bottom {
-      margin-top:40px; padding-top:24px;
-      border-top:1px solid rgba(255,200,150,0.06);
-      font-size:0.75rem; text-align:center; color:var(--text-dim);
-    }
-    @media(max-width:860px){ .footer-grid { grid-template-columns:1fr 1fr; gap:32px; } }
-    @media(max-width:480px){ .footer-grid { grid-template-columns:1fr; } }
-
-    /* ---- scroll animations ---- */
-    .reveal {
-      opacity:0; transform:translateY(40px);
-      transition:opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1);
-    }
-    .reveal.visible { opacity:1; transform:translateY(0); }
-    .reveal-delay-1 { transition-delay:0.1s; }
-    .reveal-delay-2 { transition-delay:0.2s; }
-    .reveal-delay-3 { transition-delay:0.3s; }
-    .reveal-delay-4 { transition-delay:0.4s; }
-
-    /* ---- connector ---- */
-    .section-connector { text-align:center; padding:20px 0; position:relative; z-index:1; }
-    .connector-line {
-      display:inline-block; width:1px; height:40px;
-      background:linear-gradient(180deg, var(--orange), transparent);
-    }
-
-    /* ---- scroll hint ---- */
-    .scroll-hint {
-      position:absolute; bottom:40px; left:50%; transform:translateX(-50%);
-      display:flex; flex-direction:column; align-items:center; gap:8px;
-      color:var(--text-dim); font-size:0.7rem; font-family:var(--font-en);
-      animation:fade-down 2.5s infinite;
-    }
-    .scroll-hint .arrow { width:16px;height:16px;border-right:1px solid var(--text-dim);border-bottom:1px solid var(--text-dim);transform:rotate(45deg); }
-    @keyframes fade-down { 0%,100%{opacity:0.2;transform:translateX(-50%) translateY(0)}50%{opacity:0.8;transform:translateX(-50%) translateY(8px)} }
-
-    /* ---- 万物生长 divider ---- */
-    .growth-divider {
-      text-align:center; padding:16px 0; position:relative; z-index:1;
-    }
-    .growth-divider .spark {
-      display:inline-block;
-      background:linear-gradient(90deg, transparent, var(--gold), transparent);
-      width:60px; height:1px; border-radius:2px;
-      animation:spark-pulse 3s ease-in-out infinite;
-    }
-    @keyframes spark-pulse { 0%,100%{opacity:0.2;width:40px}50%{opacity:0.8;width:80px} }
-  </style>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
 <canvas id="bg-canvas"></canvas>
 
-<!-- ===== NAV ===== -->
-<nav class="nav">
-  <div class="nav-inner">
-    <a href="#" class="logo">L/NKERS <span>联结者</span></a>
-    <div class="nav-links" id="navLinks">
-      <a href="#services">服务</a>
-      <a href="#matrix">产品</a>
-      <a href="#systems">方法论</a>
-      <a href="#cases">案例</a>
-      <a href="#community">联结宇宙</a>
-      <a href="#contact" class="nav-cta">免费诊断</a>
-    </div>
-    <button class="hamburger" id="hamToggle" aria-label="菜单">
-      <span></span><span></span><span></span>
-    </button>
+<nav class="nav"><div class="nav-inner">
+  <a href="index.html" class="logo">L/NKERS <span>联结者</span></a>
+  <div class="nav-links" id="navLinks">
+    <a href="services.html">服务</a>
+    <a href="methodology.html">方法论</a>
+    <a href="cases.html">案例</a>
+    <a href="community.html">联结宇宙</a>
+    <a href="contact.html" class="nav-cta">免费诊断</a>
   </div>
-</nav>
+  <button class="hamburger" id="hamToggle" aria-label="菜单"><span></span><span></span><span></span></button>
+</div></nav>
 
-<!-- ===== HERO ===== -->
-<section class="hero" id="hero">
+<section class="hero" style="min-height:100vh;display:flex;align-items:center;padding:120px 0 60px;position:relative;z-index:1;">
   <div class="container" style="position:relative;z-index:2;">
-    <div class="hero-content">
-      <div class="hero-tag"><span class="dot"></span> FDE · 前沿部署服务商</div>
-      <h1>
-        <div class="line1">你不是需要一个品牌公司。</div>
-        <div class="line2 hero-glow">你需要一个前沿部署工程师。</div>
+    <div style="max-width:880px;">
+      <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(251,146,60,0.1);border:1px solid rgba(251,146,60,0.25);padding:6px 18px;border-radius:20px;font-size:0.8rem;color:var(--gold);margin-bottom:28px;font-family:var(--font-en);">
+        <span style="width:6px;height:6px;border-radius:50%;background:var(--warm-teal);animation:pulse-dot 2s infinite;"></span> FDE · 前沿部署服务商
+      </div>
+      <h1 style="font-weight:900;font-size:clamp(2rem,5.5vw,3.6rem);line-height:1.12;margin-bottom:8px;">
+        <div style="color:var(--text);">你不是需要一个品牌公司。</div>
+        <div style="background:linear-gradient(135deg,var(--gold),var(--orange),var(--coral));-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 0 40px rgba(251,146,60,0.2),0 0 80px rgba(251,191,36,0.08);">你需要一个前沿部署工程师。</div>
       </h1>
-      <p>联结者 = FDE + 生命需求地图 + AI 原生组织 + 联结宇宙会员生态。<br>我们不卖工具，我们为你的业务结果负责。</p>
-      <div class="hero-actions">
-        <a href="#contact" class="btn btn-primary">📋 免费AI增益扫描</a>
-        <a href="#systems" class="btn btn-glass">📖 了解FDE模式</a>
+      <p style="color:var(--text-dim);font-size:1.1rem;max-width:580px;margin:20px 0 36px;line-height:1.8;">
+        联结者 = FDE + 生命需求地图 + AI 原生组织 + 联结宇宙会员生态。<br>我们不卖工具，我们为你的业务结果负责。
+      </p>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;">
+        <a href="contact.html" class="btn btn-primary">📋 免费AI增益扫描</a>
+        <a href="methodology.html" class="btn btn-glass">📖 了解FDE模式</a>
       </div>
-      <div class="hero-stats">
-        <div class="hero-stat"><div class="num">50+</div><div class="lbl">服务组织</div></div>
-        <div class="hero-stat"><div class="num">8</div><div class="lbl">年深耕</div></div>
-        <div class="hero-stat"><div class="num">6</div><div class="lbl">大服务体系</div></div>
-        <div class="hero-stat"><div class="num">8</div><div class="lbl">协同空间</div></div>
+      <div style="display:flex;gap:48px;margin-top:48px;padding-top:32px;border-top:1px solid rgba(255,200,150,0.08);flex-wrap:wrap;">
+        <div style="text-align:center;"><div style="font-family:var(--font-en);font-size:1.8rem;font-weight:700;background:linear-gradient(135deg,var(--gold),var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">50+</div><div style="font-size:0.8rem;color:var(--text-dim);margin-top:2px;">服务组织</div></div>
+        <div style="text-align:center;"><div style="font-family:var(--font-en);font-size:1.8rem;font-weight:700;background:linear-gradient(135deg,var(--gold),var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">8</div><div style="font-size:0.8rem;color:var(--text-dim);margin-top:2px;">年深耕</div></div>
+        <div style="text-align:center;"><div style="font-family:var(--font-en);font-size:1.8rem;font-weight:700;background:linear-gradient(135deg,var(--gold),var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">6</div><div style="font-size:0.8rem;color:var(--text-dim);margin-top:2px;">大服务体系</div></div>
+        <div style="text-align:center;"><div style="font-family:var(--font-en);font-size:1.8rem;font-weight:700;background:linear-gradient(135deg,var(--gold),var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">8</div><div style="font-size:0.8rem;color:var(--text-dim);margin-top:2px;">协同空间</div></div>
       </div>
     </div>
   </div>
-  <div class="scroll-hint"><div class="arrow"></div>SCROLL</div>
 </section>
 
-<div class="growth-divider"><div class="spark"></div></div>
-
-<!-- ===== SERVICES · 5 SCENARIOS ===== -->
-<section class="section" id="services">
+<section class="section">
   <div class="container">
-    <h2 class="section-title reveal">找到你的<span class="grad">AI切入点</span></h2>
-    <p class="section-sub reveal">我们不堆功能，而是先挑你最痛、最容易见效的一两个场景切入，跑出结果再逐步铺开。</p>
+    <h2 class="section-title reveal">从<span class="grad">5大场景</span>找到你的AI切入点</h2>
+    <p class="section-sub reveal">我们不堆功能，先挑你最痛、最容易见效的场景切入，跑出结果再逐步铺开。</p>
     <div class="grid-5">
-      <div class="scenario-card reveal reveal-delay-1">
-        <div class="scenario-icon">📝</div>
-        <h3>内容场景</h3>
-        <p>AI内容生产线——写作、配图、排版全流程提效</p>
-        <div class="scenario-price">999元起</div>
-      </div>
-      <div class="scenario-card reveal reveal-delay-2">
-        <div class="scenario-icon">🤝</div>
-        <h3>客户场景</h3>
-        <p>AI客户管理——跟进、回访、接待全自动化</p>
-        <div class="scenario-price">9,900元起</div>
-      </div>
-      <div class="scenario-card reveal reveal-delay-3">
-        <div class="scenario-icon">🔄</div>
-        <h3>流程场景</h3>
-        <p>AI流程优化——SOP重构、自动化、Agent部署</p>
-        <div class="scenario-price">9,900元起</div>
-      </div>
-      <div class="scenario-card reveal reveal-delay-4">
-        <div class="scenario-icon">📚</div>
-        <h3>知识场景</h3>
-        <p>企业知识库——构建、检索、复用的数字骨架</p>
-        <div class="scenario-price">6,000元起</div>
-      </div>
-      <div class="scenario-card reveal reveal-delay-4">
-        <div class="scenario-icon">🎯</div>
-        <h3>战略场景</h3>
-        <p>AI战略诊断——定位、评估、规划一站式</p>
-        <div class="scenario-price">免费起</div>
-      </div>
+      <div class="scenario-card reveal reveal-d1"><div class="scenario-icon">📝</div><h3>内容场景</h3><p>AI内容生产线——写作、配图、排版全流程提效</p><div class="scenario-price">999元起</div></div>
+      <div class="scenario-card reveal reveal-d2"><div class="scenario-icon">🤝</div><h3>客户场景</h3><p>AI客户管理——跟进、回访、接待全自动化</p><div class="scenario-price">9,900元起</div></div>
+      <div class="scenario-card reveal reveal-d3"><div class="scenario-icon">🔄</div><h3>流程场景</h3><p>AI流程优化——SOP重构、自动化、Agent部署</p><div class="scenario-price">9,900元起</div></div>
+      <div class="scenario-card reveal reveal-d4"><div class="scenario-icon">📚</div><h3>知识场景</h3><p>企业知识库——构建、检索、复用的数字骨架</p><div class="scenario-price">6,000元起</div></div>
+      <div class="scenario-card reveal reveal-d4"><div class="scenario-icon">🎯</div><h3>战略场景</h3><p>AI战略诊断——定位、评估、规划一站式</p><div class="scenario-price">免费起</div></div>
     </div>
+    <div class="reveal" style="text-align:center;margin-top:32px;"><a href="services.html" class="btn btn-glass">查看完整产品矩阵 →</a></div>
   </div>
 </section>
 
-<div class="growth-divider"><div class="spark"></div></div>
-
-<!-- ===== PRODUCT MATRIX ===== -->
-<section class="section" id="matrix">
+<section class="section" style="padding-top:0;">
   <div class="container">
-    <h2 class="section-title reveal">从免费到生态 · <span class="grad">完整路径</span></h2>
-    <p class="section-sub reveal">无论你的企业处于哪个阶段，都能找到对应的入口和升级路径。</p>
-    <div class="tier-chain">
-      <div class="tier-item reveal"><div class="tier-badge badge-free">免费</div><div class="tier-info"><div class="name">🎁 AI增益扫描</div><div class="desc">10分钟在线诊断，自动生成专属AI增益报告</div></div><div class="tier-price">免费</div></div>
-      <div class="tier-item reveal"><div class="tier-badge badge-training">培训</div><div class="tier-info"><div class="name">🎓 T1公开课 → T2实战营 → T3认证班</div><div class="desc">AI内容创作 / Agent搭建 / AI Coding / SOP制图</div></div><div class="tier-price">999-9,999元</div></div>
-      <div class="tier-item reveal"><div class="tier-badge badge-tool">工具栈</div><div class="tier-info"><div class="name">🥡 AI工具栈 · 6大场景</div><div class="desc">文件夹即产品，交给AI说一句"照着装"即可使用</div></div><div class="tier-price">9,900元/个</div></div>
-      <div class="tier-item reveal"><div class="tier-badge badge-l0">L0</div><div class="tier-info"><div class="name">🩺 企业生命诊断</div><div class="desc">一周定位你的企业在八大系统中的位置</div></div><div class="tier-price">~6,000元</div></div>
-      <div class="tier-item reveal"><div class="tier-badge badge-l1">L1</div><div class="tier-info"><div class="name">🛠️ 企业基础陪伴</div><div class="desc">品牌系统 + AI运营系统搭建</div></div><div class="tier-price">3-10万</div></div>
-      <div class="tier-item reveal"><div class="tier-badge badge-l2">L2</div><div class="tier-info"><div class="name">🚀 企业深度共建</div><div class="desc">企业AI大脑系统 + Agent编队</div></div><div class="tier-price">12-50万</div></div>
-      <div class="tier-item reveal"><div class="tier-badge badge-l3">L3</div><div class="tier-info"><div class="name">🌐 联结宇宙伙伴</div><div class="desc">生态共创 · 长期共生</div></div><div class="tier-price">20-100万/年</div></div>
+    <div class="glass" style="padding:40px;text-align:center;max-width:700px;margin:0 auto;" class="reveal">
+      <h3 style="font-size:1.2rem;margin-bottom:8px;">为什么是 <span style="color:var(--gold);">FDE</span>？</h3>
+      <p style="font-size:0.9rem;color:var(--text-dim);margin-bottom:16px;">FDE（前沿部署工程师）是2026年全球最火的企业服务趋势。Palantir开创，OpenAI、Anthropic重金押注。</p>
+      <a href="methodology.html" class="btn btn-glass">了解联结者的FDE升级版 →</a>
     </div>
   </div>
 </section>
 
-<div class="growth-divider"><div class="spark"></div></div>
-
-<!-- ===== EIGHT SYSTEMS ===== -->
-<section class="section" id="systems">
-  <div class="container">
-    <h2 class="section-title reveal">未来人类<span class="grad">生命需求地图</span></h2>
-    <p class="section-sub reveal">企业不应按行业划分，而应按"它帮助人类生命发生什么变化"分类。八大系统覆盖从生存到进化的完整旅程。</p>
-    <div class="grid-4">
-      <div class="sys-card reveal reveal-delay-1"><div class="sys-num">01</div><h4>🧬 生命健康</h4><p>如何让生命保持活力？</p></div>
-      <div class="sys-card reveal reveal-delay-2"><div class="sys-num">02</div><h4>🏠 生活空间</h4><p>如何拥有适合自己的环境？</p></div>
-      <div class="sys-card reveal reveal-delay-3"><div class="sys-num">03</div><h4>🤝 关系连接</h4><p>如何与他人建立深度连接？</p></div>
-      <div class="sys-card reveal reveal-delay-4"><div class="sys-num">04</div><h4>📚 成长学习</h4><p>人如何持续进化？</p></div>
-      <div class="sys-card reveal reveal-delay-1"><div class="sys-num">05</div><h4>💰 财富创造</h4><p>人如何创造价值？</p></div>
-      <div class="sys-card reveal reveal-delay-2"><div class="sys-num">06</div><h4>🌍 体验探索</h4><p>人如何体验世界？</p></div>
-      <div class="sys-card reveal reveal-delay-3"><div class="sys-num">07</div><h4>🧘 精神意义</h4><p>人为什么而活？</p></div>
-      <div class="sys-card reveal reveal-delay-4"><div class="sys-num">08</div><h4>🔮 未来进化</h4><p>人类如何进入未来？</p></div>
-    </div>
-  </div>
-</section>
-
-<div class="growth-divider"><div class="spark"></div></div>
-
-<!-- ===== FDE TREND ===== -->
-<section class="section" id="fde">
-  <div class="container">
-    <h2 class="section-title reveal">为什么是<span class="grad">FDE</span>？</h2>
-    <p class="section-sub reveal">FDE（前沿部署工程师）是2026年全球最火的企业服务趋势。Palantir开创，OpenAI、Anthropic重金押注。联结者做了FDE的升级版。</p>
-    <div class="fde-grid">
-      <div class="fde-card reveal reveal-delay-1"><div class="big">+729%</div><div class="desc">2026年FDE岗位同比增长</div></div>
-      <div class="fde-card reveal reveal-delay-2"><div class="big">$4B</div><div class="desc">OpenAI部署子公司获融资</div></div>
-      <div class="fde-card reveal reveal-delay-3"><div class="big">$1.5B</div><div class="desc">Anthropic合资公司获融资</div></div>
-      <div class="fde-card reveal reveal-delay-4"><div class="big">$400B</div><div class="desc">Palantir FDE模式市值</div></div>
-    </div>
-    <div style="margin-top:32px;text-align:center;" class="reveal">
-      <div class="glass" style="display:inline-block;padding:16px 28px;max-width:600px;">
-        <p style="font-size:0.9rem;color:var(--text-dim);margin:0;">
-          <span style="color:var(--gold);font-weight:600;">联结者升级版</span> — 传统FDE只做技术落地，联结者 = FDE + 生命需求地图 + AI原生组织 + 联结宇宙会员生态
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="growth-divider"><div class="spark"></div></div>
-
-<!-- ===== CASES ===== -->
-<section class="section" id="cases">
-  <div class="container">
-    <h2 class="section-title reveal">他们选择了<span class="grad">联结者</span></h2>
-    <p class="section-sub reveal">50+组织的共同选择，覆盖政务、商业、文旅、制造、金融等多领域。</p>
-    <div style="display:flex;flex-direction:column;gap:20px;">
-      <div class="case-card reveal"><div class="case-info"><div class="case-tags"><span>品牌升级</span><span>4年深度</span><span>A级伙伴</span></div><h3>山田土 · 自在茶生活品牌</h3><p class="case-desc">联结者4年深度陪跑，从自然生长走向系统运营。中秋季度实现500万业绩。</p><div class="case-stats"><div class="case-stat"><div class="num">4年</div><div class="lbl">持续服务</div></div><div class="case-stat"><div class="num">500万</div><div class="lbl">季度业绩</div></div><div class="case-stat"><div class="num">30+</div><div class="lbl">国际奖项</div></div></div></div></div>
-      <div class="case-card reveal"><div class="case-info"><div class="case-tags"><span>全链路运营</span><span>非遗传承</span><span>A级伙伴</span></div><h3>陈氏自在妙手堂 · 非遗中医康养</h3><p class="case-desc">四代非遗铃医传承，联结者深度陪跑，从传统技艺走向系统化、平台化运营。</p><div class="case-stats"><div class="case-stat"><div class="num">四代</div><div class="lbl">非遗传承</div></div><div class="case-stat"><div class="num">81分</div><div class="lbl">六维评分</div></div><div class="case-stat"><div class="num">A级</div><div class="lbl">生态伙伴</div></div></div></div></div>
-      <div class="case-card reveal"><div class="case-info"><div class="case-tags"><span>战略协同</span><span>品牌方法</span><span>A级伙伴</span></div><h3>集和品牌 · 中国企业品牌升级</h3><p class="case-desc">近30年行业深耕，3000+企业服务实战。联结者战略协同伙伴。</p><div class="case-stats"><div class="case-stat"><div class="num">30年</div><div class="lbl">行业深耕</div></div><div class="case-stat"><div class="num">3000+</div><div class="lbl">企业服务</div></div><div class="case-stat"><div class="num">87分</div><div class="lbl">六维评分</div></div></div></div></div>
-    </div>
-  </div>
-</section>
-
-<div class="growth-divider"><div class="spark"></div></div>
-
-<!-- ===== COMMUNITY ===== -->
-<section class="section" id="community">
-  <div class="container">
-    <h2 class="section-title reveal">联结宇宙 · <span class="grad">生命共创者网络</span></h2>
-    <p class="section-sub reveal">你不是消费者，你是生命共创者。发现人生愿景，连接同频的人，体验未来的生活方式。</p>
-    <div class="member-grid">
-      <div class="member-card reveal reveal-delay-1"><div class="member-icon">🌟</div><h4>愿景创造者</h4><p>创业者·企业主</p><div class="member-count">20人</div></div>
-      <div class="member-card reveal reveal-delay-2"><div class="member-icon">💡</div><h4>价值贡献者</h4><p>设计师·咨询师</p><div class="member-count">30人</div></div>
-      <div class="member-card reveal reveal-delay-3"><div class="member-icon">🌱</div><h4>成长探索者</h4><p>年轻职场·转型者</p><div class="member-count">30人</div></div>
-      <div class="member-card reveal reveal-delay-4"><div class="member-icon">🔗</div><h4>资源连接者</h4><p>行业领袖</p><div class="member-count">20人</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== CTA ===== -->
-<section class="section" id="contact">
+<section class="cta-banner section" style="background:none;border:none;padding:0;">
   <div class="container">
     <div class="cta-banner reveal">
       <h2>找到你的企业<span class="grad">AI切入点</span></h2>
-      <p>10分钟免费AI增益扫描，自动生成专属报告，告诉你从哪里开始。</p>
-      <a href="#" class="btn btn-primary" style="font-size:1.05rem;padding:16px 40px;">📋 立即开始免费扫描</a>
+      <p>10分钟免费AI增益扫描，告诉你从哪里开始。</p>
+      <a href="contact.html" class="btn btn-primary" style="font-size:1.05rem;padding:16px 40px;">📋 立即开始免费扫描</a>
     </div>
   </div>
 </section>
 
-<!-- ===== FOOTER ===== -->
-<footer class="footer">
-  <div class="footer-inner">
-    <div class="footer-grid">
-      <div class="footer-brand"><h3>L/NKERS <span>联结者</span></h3><p>联结者（广州）企业服务有限公司 · 品牌：领客思<br>联结价值与需求。Link Value and Demand.</p></div>
-      <div class="footer-col"><h4>服务</h4><a href="#services">按场景选产品</a><a href="#matrix">产品矩阵</a><a href="#contact">免费诊断</a></div>
-      <div class="footer-col"><h4>了解更多</h4><a href="#systems">方法论</a><a href="#cases">案例</a><a href="#fde">FDE趋势</a></div>
-      <div class="footer-col"><h4>联结宇宙</h4><a href="#community">加入联结宇宙</a><a href="#contact">合作申请</a></div>
-    </div>
-    <div class="footer-bottom">© 2026 联结者（广州）企业服务有限公司 · 领客思 L/NKERS</div>
+<footer class="footer"><div class="footer-inner">
+  <div class="footer-grid">
+    <div class="footer-brand"><h3>L/NKERS <span>联结者</span></h3><p>联结者（广州）企业服务有限公司 · 品牌：领客思<br>联结价值与需求。Link Value and Demand.</p></div>
+    <div class="footer-col"><h4>服务</h4><a href="services.html">按场景选产品</a><a href="services.html#matrix">产品矩阵</a><a href="contact.html">免费诊断</a></div>
+    <div class="footer-col"><h4>了解更多</h4><a href="methodology.html">方法论</a><a href="cases.html">案例</a><a href="methodology.html#fde">FDE趋势</a></div>
+    <div class="footer-col"><h4>联结宇宙</h4><a href="community.html">加入联结宇宙</a><a href="contact.html">合作申请</a></div>
   </div>
-</footer>
+  <div class="footer-bottom">© 2026 联结者（广州）企业服务有限公司 · 领客思 L/NKERS</div>
+</div></footer>
 
-<script>
-const canvas = document.getElementById('bg-canvas');
-const ctx = canvas.getContext('2d');
-let W,H;
-
-function resize(){
-  W=canvas.width=window.innerWidth;
-  H=canvas.height=window.innerHeight;
-}
-window.addEventListener('resize',resize);
-resize();
-
-// ===== 万物生长粒子系统 =====
-const GROW_COUNT = 100;
-const grows = [];
-const METEOR_COUNT = 3;
-const meteors = [];
-
-// 生长粒子——像种子发芽、向上生长
-class GrowParticle {
-  constructor(init=true){
-    this.reset(init);
-  }
-  reset(init){
-    this.x = Math.random() * W;
-    this.baseY = H + Math.random() * 100;
-    this.y = this.baseY;
-    this.targetY = Math.random() * H * 0.7;
-    this.speed = Math.random() * 0.3 + 0.1; // 生长速度
-    this.r = Math.random() * 2.5 + 1;
-    this.alpha = Math.random() * 0.3 + 0.08;
-    this.hue = 25 + Math.random() * 20; // 暖色调 25-45
-    this.phase = Math.random() * Math.PI * 2;
-    this.sway = Math.random() * 1.5 + 0.5; // 摇摆幅度
-    this.completed = init ? false : Math.random() > 0.5; // 部分初始已完成
-    if(this.completed) this.y = this.targetY;
-  }
-  update(){
-    if(this.completed){
-      // 完成生长后微微摇摆（像植物在风中摇曳）
-      this.y = this.targetY + Math.sin(Date.now() * 0.001 + this.phase) * 0.3;
-      this.x += Math.sin(Date.now() * 0.0008 + this.phase) * 0.05;
-      return;
-    }
-    // 向上生长
-    this.y -= this.speed;
-    // 轻微左右摇摆（像植物自然生长）
-    this.x += Math.sin(Date.now() * 0.001 + this.phase) * 0.03;
-    // 到达目标后标记完成
-    if(this.y <= this.targetY){
-      this.y = this.targetY;
-      this.completed = true;
-    }
-  }
-  draw(){
-    // 从下往上的生长轨迹
-    const alpha = this.alpha * (this.completed ? 1 : Math.max(0.1, (this.baseY - this.y) / (this.baseY - this.targetY)));
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-    ctx.fillStyle = `hsla(${this.hue}, 80%, 60%, ${alpha})`;
-    ctx.fill();
-
-    // 完成生长后加一点小光晕（像开花）
-    if(this.completed){
-      ctx.beginPath();
-      ctx.arc(this.x, this.y, this.r * 2.5, 0, Math.PI * 2);
-      ctx.fillStyle = `hsla(${this.hue}, 90%, 70%, ${alpha * 0.15})`;
-      ctx.fill();
-    }
-  }
-  isDead(){
-    return this.y < -10;
-  }
-}
-
-// 流星
-class Meteor {
-  constructor(){
-    this.reset();
-  }
-  reset(){
-    this.x = Math.random() * W * 1.2 - W * 0.1;
-    this.y = Math.random() * H * 0.3;
-    this.len = Math.random() * 120 + 60;
-    this.speed = Math.random() * 6 + 4;
-    this.angle = Math.PI * 0.25 + Math.random() * 0.15;
-    this.alpha = 0;
-    this.life = 0;
-    this.maxLife = 60 + Math.random() * 40;
-    this.trail = [];
-  }
-  update(){
-    this.life++;
-    if(this.life < 20){
-      this.alpha = this.life / 20;
-    } else if(this.life > this.maxLife - 20){
-      this.alpha = (this.maxLife - this.life) / 20;
-    } else {
-      this.alpha = 1;
-    }
-    this.x += Math.cos(this.angle) * this.speed;
-    this.y += Math.sin(this.angle) * this.speed;
-    this.trail.push({x:this.x, y:this.y});
-    if(this.trail.length > 15) this.trail.shift();
-  }
-  draw(){
-    if(this.alpha <= 0) return;
-    // 拖尾
-    for(let i=0; i<this.trail.length; i++){
-      const t = this.trail[i];
-      const a = (i / this.trail.length) * this.alpha * 0.4;
-      ctx.beginPath();
-      ctx.arc(t.x, t.y, 1.2 * (i/this.trail.length), 0, Math.PI*2);
-      ctx.fillStyle = `rgba(251,191,36,${a})`;
-      ctx.fill();
-    }
-    // 流星头 - 暖金色
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, 2, 0, Math.PI*2);
-    const grad = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, 8);
-    grad.addColorStop(0, `rgba(255,245,200,${this.alpha})`);
-    grad.addColorStop(0.3, `rgba(251,191,36,${this.alpha * 0.6})`);
-    grad.addColorStop(1, `rgba(251,146,60,0)`);
-    ctx.fillStyle = grad;
-    ctx.fill();
-
-    // 发光尾巴
-    ctx.beginPath();
-    ctx.moveTo(this.x, this.y);
-    ctx.lineTo(
-      this.x - Math.cos(this.angle) * this.len * 0.5,
-      this.y - Math.sin(this.angle) * this.len * 0.5
-    );
-    ctx.strokeStyle = `rgba(251,191,36,${this.alpha * 0.15})`;
-    ctx.lineWidth = 1.5;
-    ctx.stroke();
-  }
-  isDead(){
-    return this.life > this.maxLife || this.x > W + 100 || this.y > H + 100;
-  }
-}
-
-// 初始化生长粒子
-for(let i=0; i<GROW_COUNT; i++) grows.push(new GrowParticle(true));
-
-// 初始化流星
-for(let i=0; i<3; i++){
-  const m = new Meteor();
-  m.life = -Math.random() * 200; // 交错出现
-  m.maxLife = 60 + Math.random() * 60;
-  meteors.push(m);
-}
-
-// ---- 底部温暖光晕 ----
-function drawGlow(){
-  // 底部温暖渐变
-  const grad = ctx.createLinearGradient(0, H * 0.7, 0, H);
-  grad.addColorStop(0, 'rgba(251,146,60,0)');
-  grad.addColorStop(0.3, 'rgba(251,146,60,0.008)');
-  grad.addColorStop(0.7, 'rgba(251,114,133,0.005)');
-  grad.addColorStop(1, 'rgba(251,191,36,0)');
-  ctx.fillStyle = grad;
-  ctx.fillRect(0, H * 0.5, W, H * 0.5);
-}
-
-// ---- 星星 ----
-const stars = [];
-for(let i=0; i<60; i++){
-  stars.push({
-    x: Math.random() * W,
-    y: Math.random() * H * 0.6,
-    r: Math.random() * 1 + 0.3,
-    a: Math.random() * 0.4 + 0.1,
-    speed: Math.random() * 0.02 + 0.005
-  });
-}
-
-function drawStars(time){
-  stars.forEach(s => {
-    const flicker = Math.sin(time * s.speed + s.x) * 0.3 + 0.7;
-    ctx.beginPath();
-    ctx.arc(s.x, s.y, s.r, 0, Math.PI*2);
-    ctx.fillStyle = `rgba(255,245,220,${s.a * flicker})`;
-    ctx.fill();
-  });
-}
-
-// ---- 动画循环 ----
-let meteorTimer = 0;
-
-function animate(time){
-  ctx.clearRect(0, 0, W, H);
-
-  // 底部暖光
-  drawGlow();
-
-  // 星星
-  drawStars(time);
-
-  // 生长粒子
-  grows.forEach(p => { p.update(); p.draw(); });
-
-  // 清理并补充生长粒子
-  for(let i=grows.length-1; i>=0; i--){
-    if(grows[i].isDead()){
-      grows.splice(i, 1);
-    }
-  }
-  while(grows.length < GROW_COUNT){
-    grows.push(new GrowParticle(false));
-  }
-
-  // 流星
-  meteorTimer++;
-  // 每隔一阵自动生成新流星
-  if(meteorTimer > 300 + Math.random() * 200){
-    meteorTimer = 0;
-    meteors.push(new Meteor());
-  }
-  meteors.forEach(m => { m.update(); m.draw(); });
-  for(let i=meteors.length-1; i>=0; i--){
-    if(meteors[i].isDead()) meteors.splice(i, 1);
-  }
-
-  requestAnimationFrame(animate);
-}
-animate(0);
-
-// ---- 导航交互 ----
-document.getElementById('hamToggle').addEventListener('click',()=>{
-  document.getElementById('navLinks').classList.toggle('open');
-});
-document.querySelectorAll('.nav-links a').forEach(a=>{
-  a.addEventListener('click',()=>{
-    document.getElementById('navLinks').classList.remove('open');
-  });
-});
-
-// ---- 滚动渐入 ----
-const observer = new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
-    }
-  });
-},{threshold:0.1});
-document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-</script>
+<style>@keyframes pulse-dot{0%,100%{opacity:1;box-shadow:0 0 6px var(--warm-teal)}50%{opacity:0.3;box-shadow:none}}</style>
+<script src="js/main.js"></script>
 </body>
 </html>
