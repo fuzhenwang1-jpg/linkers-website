@@ -3,138 +3,132 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="联结者方法论 — 八大系统生命需求地图 + 五层沙漏模型 + 六维企业价值评估。">
   <title>方法论 · 联结者 L/NKERS</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css">
+  <meta name="description" content="联结者方法论—八大系统生命需求地图+五层沙漏模型+六维企业评估+FDE趋势。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<nav class="nav">
-  <div class="nav-inner">
-    <a href="/" class="nav-logo">联结者<span>L/NKERS</span></a>
-    <div class="nav-links" id="navLinks">
-      <a href="about.html">关于</a><a href="services.html">服务与产品</a><a href="methodology.html">方法论</a><a href="cases.html">案例</a><a href="community.html">联结宇宙</a><a href="insights.html">洞察</a><a href="contact.html" class="nav-cta">预约诊断</a>
-    </div>
-    <button class="nav-toggle" id="navToggle" aria-label="菜单"><span></span><span></span><span></span></button>
+<canvas id="bg-canvas"></canvas>
+
+<nav class="nav"><div class="nav-inner">
+  <a href="index.html" class="logo">L/NKERS <span>联结者</span></a>
+  <div class="nav-links" id="navLinks">
+    <a href="services.html">服务</a>
+    <a href="methodology.html">方法论</a>
+    <a href="cases.html">案例</a>
+    <a href="community.html">联结宇宙</a>
+    <a href="contact.html" class="nav-cta">免费诊断</a>
   </div>
-</nav>
+  <button class="hamburger" id="hamToggle" aria-label="菜单"><span></span><span></span><span></span></button>
+</div></nav>
 
 <section class="page-header">
   <div class="container">
-    <h1>方法论</h1>
-    <p>联结者的核心思想体系——从人的生命需求出发，重新定义企业服务的底层逻辑。</p>
+    <div class="breadcrumb"><a href="index.html">首页</a> / <span>方法论</span></div>
+    <h1>联结者的<span class="grad">思想体系</span></h1>
+    <p>从人的生命需求出发，重新定义企业服务的底层逻辑。这不是一套理论，是我们的行动指南。</p>
   </div>
 </section>
 
-<!-- Systems -->
+<!-- 八大系统 -->
 <section class="section">
   <div class="container">
-    <h2 class="section-title">联结者未来人类生命需求地图</h2>
-    <p class="section-sub">企业不应按行业划分，而应按「它帮助人类生命发生什么变化」分类。八大系统覆盖人从生存到进化的完整旅程。</p>
-    <div class="systems-grid">
-      <div class="system-card"><div class="system-num">01</div><h4>生命健康</h4><p>如何让生命保持活力？</p><span style="font-size:0.7rem;color:var(--gray-500);display:block;margin-top:4px;">医疗·运动·中医·心理</span></div>
-      <div class="system-card"><div class="system-num">02</div><h4>生活空间</h4><p>如何拥有适合自己的环境？</p><span style="font-size:0.7rem;color:var(--gray-500);display:block;margin-top:4px;">智能家居·社区·安全</span></div>
-      <div class="system-card"><div class="system-num">03</div><h4>关系连接</h4><p>如何与他人建立深度连接？</p><span style="font-size:0.7rem;color:var(--gray-500);display:block;margin-top:4px;">社群·婚恋·兴趣组织</span></div>
-      <div class="system-card"><div class="system-num">04</div><h4>成长学习</h4><p>人如何持续进化？</p><span style="font-size:0.7rem;color:var(--gray-500);display:block;margin-top:4px;">教育·培训·认知提升</span></div>
-      <div class="system-card"><div class="system-num">05</div><h4>财富创造</h4><p>人如何创造价值？</p><span style="font-size:0.7rem;color:var(--gray-500);display:block;margin-top:4px;">企服·创业·投资·咨询</span></div>
-      <div class="system-card"><div class="system-num">06</div><h4>体验探索</h4><p>人如何体验世界？</p><span style="font-size:0.7rem;color:var(--gray-500);display:block;margin-top:4px;">旅行·艺术·美食·户外</span></div>
-      <div class="system-card"><div class="system-num">07</div><h4>精神意义</h4><p>人为什么而活？</p><span style="font-size:0.7rem;color:var(--gray-500);display:block;margin-top:4px;">哲学·禅修·传统文化</span></div>
-      <div class="system-card"><div class="system-num">08</div><h4>未来进化</h4><p>人类如何进入未来？</p><span style="font-size:0.7rem;color:var(--gray-500);display:block;margin-top:4px;">AI·机器人·生物科技</span></div>
+    <h2 class="section-title reveal">未来人类<span class="grad">生命需求地图</span></h2>
+    <p class="section-sub reveal">企业不应按行业划分，而应按"它帮助人类生命发生什么变化"分类。八大系统覆盖从生存到进化的完整旅程。</p>
+    <div class="grid-4">
+      <div class="sys-card reveal reveal-d1"><div class="sys-num">01</div><h4>🧬 生命健康</h4><p>如何让生命保持活力？</p></div>
+      <div class="sys-card reveal reveal-d2"><div class="sys-num">02</div><h4>🏠 生活空间</h4><p>如何拥有适合自己的环境？</p></div>
+      <div class="sys-card reveal reveal-d3"><div class="sys-num">03</div><h4>🤝 关系连接</h4><p>如何与他人建立深度连接？</p></div>
+      <div class="sys-card reveal reveal-d4"><div class="sys-num">04</div><h4>📚 成长学习</h4><p>人如何持续进化？</p></div>
+      <div class="sys-card reveal reveal-d1"><div class="sys-num">05</div><h4>💰 财富创造</h4><p>人如何创造价值？</p></div>
+      <div class="sys-card reveal reveal-d2"><div class="sys-num">06</div><h4>🌍 体验探索</h4><p>人如何体验世界？</p></div>
+      <div class="sys-card reveal reveal-d3"><div class="sys-num">07</div><h4>🧘 精神意义</h4><p>人为什么而活？</p></div>
+      <div class="sys-card reveal reveal-d4"><div class="sys-num">08</div><h4>🔮 未来进化</h4><p>人类如何进入未来？</p></div>
+    </div>
+    <div class="glass reveal" style="padding:24px;margin-top:24px;max-width:700px;">
+      <p style="font-size:0.9rem;color:var(--text-dim);margin:0;"><span style="color:var(--gold);font-weight:600;">每个企业都可以在这张地图上找到自己的位置。</span> 联结者帮你做的，不只是装一个系统，而是帮你在人类生命需求的坐标系中，找到你的企业正在改变什么、还能改变什么。</p>
     </div>
   </div>
 </section>
 
-<!-- Sandglass -->
-<section class="section section-alt">
-  <div class="container">
-    <h2 class="section-title">五层沙漏模型</h2>
-    <p class="section-sub">联结者运营系统的核心方法论——从战略到执行，从触达到交付的完整链路。</p>
-    <div style="max-width:600px;margin:0 auto;">
-      <div style="background:var(--navy);color:white;padding:16px 24px;border-radius:8px 8px 0 0;text-align:center;font-weight:600;">顶层 · 市场周期 → 联结行动</div>
-      <div style="background:var(--navy-light);color:rgba(255,255,255,0.8);padding:14px 24px;text-align:center;font-size:0.9rem;">上漏斗 · 窗口基地 → 场域管理</div>
-      <div style="background:var(--orange);color:white;padding:18px 24px;text-align:center;font-weight:700;font-size:1.05rem;">⭐ 核心枢纽 · 联结场景（价值转化瞬间）</div>
-      <div style="background:var(--navy-light);color:rgba(255,255,255,0.8);padding:14px 24px;text-align:center;font-size:0.9rem;">下漏斗 · 产品体系 → 运营系统</div>
-      <div style="background:var(--navy);color:white;padding:16px 24px;border-radius:0 0 8px 8px;text-align:center;font-weight:600;">底座 · 组织管理 → 品牌战略</div>
-    </div>
-    <div class="text-center mt-4">
-      <div style="background:white;border:1px solid var(--gray-100);border-radius:8px;padding:16px;display:inline-block;">
-        <strong>唯一标尺：</strong>4D数据增长 — 用户量 / 互动量 / 转化量 / 复购量
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Six-dimension -->
+<!-- 六维评估 -->
 <section class="section">
   <div class="container">
-    <h2 class="section-title">企业六维价值评估模型</h2>
-    <p class="section-sub">联结者筛选企业不看规模、不看行业，用六个维度衡量企业的真实价值。</p>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;">
-      <div style="background:white;border:1px solid var(--gray-100);border-radius:var(--radius);padding:20px;">
-        <h4 style="font-weight:600;">① 生命价值匹配度（20分）</h4>
-        <p style="font-size:0.9rem;color:var(--gray-500);">是否真正改善人的生命状态？从基础交易到生命进化。</p>
+    <h2 class="section-title reveal">企业<span class="grad">六维价值评估</span></h2>
+    <p class="section-sub reveal">联结者筛选企业不看规模不看行业，用六个维度衡量企业的真实价值。</p>
+    <div class="grid-2">
+      <div class="glass" style="padding:24px;">
+        <h4 style="font-weight:600;margin-bottom:4px;">① 生命价值匹配度 <span style="color:var(--text-dim);font-weight:400;">20分</span></h4>
+        <p style="font-size:0.85rem;color:var(--text-dim);">是否真正改善人的生命状态？从基础交易到生命进化。</p>
       </div>
-      <div style="background:white;border:1px solid var(--gray-100);border-radius:var(--radius);padding:20px;">
-        <h4 style="font-weight:600;">② 未来趋势价值（20分）</h4>
-        <p style="font-size:0.9rem;color:var(--gray-500);">解决过去的问题还是未来的问题？是否与AI时代同频。</p>
+      <div class="glass" style="padding:24px;">
+        <h4 style="font-weight:600;margin-bottom:4px;">② 未来趋势价值 <span style="color:var(--text-dim);font-weight:400;">20分</span></h4>
+        <p style="font-size:0.85rem;color:var(--text-dim);">解决过去的问题还是未来的问题？是否与AI时代同频。</p>
       </div>
-      <div style="background:white;border:1px solid var(--gray-100);border-radius:var(--radius);padding:20px;">
-        <h4 style="font-weight:600;">③ 产品体验价值（20分）</h4>
-        <p style="font-size:0.9rem;color:var(--gray-500);">用户使用后，生命体验有没有提升？不是看销量，看变化。</p>
+      <div class="glass" style="padding:24px;">
+        <h4 style="font-weight:600;margin-bottom:4px;">③ 产品体验价值 <span style="color:var(--text-dim);font-weight:400;">20分</span></h4>
+        <p style="font-size:0.85rem;color:var(--text-dim);">用户使用后，生命体验有没有提升？不是看销量，看变化。</p>
       </div>
-      <div style="background:white;border:1px solid var(--gray-100);border-radius:var(--radius);padding:20px;">
-        <h4 style="font-weight:600;">④ 企业成长潜力（15分）</h4>
-        <p style="font-size:0.9rem;color:var(--gray-500);">创始人认知、团队能力、产品力、商业模式、市场空间。</p>
+      <div class="glass" style="padding:24px;">
+        <h4 style="font-weight:600;margin-bottom:4px;">④ 企业成长潜力 <span style="color:var(--text-dim);font-weight:400;">15分</span></h4>
+        <p style="font-size:0.85rem;color:var(--text-dim);">创始人认知、团队能力、产品力、商业模式、市场空间。</p>
       </div>
-      <div style="background:white;border:1px solid var(--gray-100);border-radius:var(--radius);padding:20px;">
-        <h4 style="font-weight:600;">⑤ 共创意愿（15分）</h4>
-        <p style="font-size:0.9rem;color:var(--gray-500);">是否愿意直面用户、接收反馈、迭代产品、与会员共创。</p>
+      <div class="glass" style="padding:24px;">
+        <h4 style="font-weight:600;margin-bottom:4px;">⑤ 共创意愿 <span style="color:var(--text-dim);font-weight:400;">15分</span></h4>
+        <p style="font-size:0.85rem;color:var(--text-dim);">是否愿意直面用户、接收反馈、迭代产品、与会员共创。</p>
       </div>
-      <div style="background:white;border:1px solid var(--gray-100);border-radius:var(--radius);padding:20px;">
-        <h4 style="font-weight:600;">⑥ 价值观一致性（10分）</h4>
-        <p style="font-size:0.9rem;color:var(--gray-500);">长期主义、用户价值、真诚经营、尊重生命。</p>
+      <div class="glass" style="padding:24px;">
+        <h4 style="font-weight:600;margin-bottom:4px;">⑥ 价值观一致性 <span style="color:var(--text-dim);font-weight:400;">10分</span></h4>
+        <p style="font-size:0.85rem;color:var(--text-dim);">长期主义、用户价值、真诚经营、尊重生命。</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- FDE -->
-<section class="section section-alt">
+<section class="section" id="fde">
   <div class="container">
-    <h2 class="section-title">FDE模式白皮书</h2>
-    <p class="section-sub">FDE（前沿部署工程师）是2026年全球最火的企业服务趋势。了解联结者如何将FDE升级为"FDE + 生命需求 + 会员生态"的完整服务模式。</p>
-    <div class="text-center">
-      <div style="background:white;border:1px solid var(--gray-100);border-radius:var(--radius);padding:32px;max-width:500px;margin:0 auto;">
-        <div style="font-size:3rem;margin-bottom:12px;">📘</div>
-        <h3 style="margin-bottom:8px;">FDE模式白皮书</h3>
-        <p style="font-size:0.9rem;color:var(--gray-500);margin-bottom:20px;">AI落地的终极解法 & 联结者的价值定位</p>
-        <a href="contact.html" class="btn btn-primary">获取完整白皮书</a>
+    <h2 class="section-title reveal">为什么是 <span class="grad">FDE</span>？</h2>
+    <p class="section-sub reveal">FDE（Frontier Deployed Engineer）是2026年全球最火的企业服务趋势。由Palantir开创，被OpenAI、Anthropic重金押注。</p>
+    <div class="fde-grid">
+      <div class="fde-card reveal reveal-d1"><div class="big">+729%</div><div class="desc">2026年全球FDE岗位同比增长</div></div>
+      <div class="fde-card reveal reveal-d2"><div class="big">$4B</div><div class="desc">OpenAI部署子公司DeployCo融资</div></div>
+      <div class="fde-card reveal reveal-d3"><div class="big">$1.5B</div><div class="desc">Anthropic合资公司获融资</div></div>
+      <div class="fde-card reveal reveal-d4"><div class="big">$400B</div><div class="desc">Palantir FDE模式支撑市值</div></div>
+    </div>
+    <div style="margin-top:32px;" class="reveal">
+      <div class="glass" style="padding:24px;">
+        <p style="font-size:0.9rem;color:var(--text-dim);margin:0;">
+          <span style="color:var(--gold);font-weight:600;">联结者的FDE升级版</span><br>
+          传统FDE只做技术落地，联结者 = FDE + 八大系统生命需求地图 + AI原生组织 + 联结宇宙会员生态。<br>
+          我们不帮企业赚钱，我们帮企业找到未来用户，创造未来生活方式。
+        </p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="cta-banner">
-  <h2>想知道你的企业在六维评估中能得多少分？</h2>
-  <p>预约企业生命诊断，拿到专属诊断报告。</p>
-  <a href="contact.html" class="btn btn-primary">📋 立即预约</a>
+<section class="section">
+  <div class="container">
+    <div class="cta-banner reveal">
+      <h2>想知道你的企业六维评分？</h2>
+      <p>免费AI增益扫描，10分钟出报告。</p>
+      <a href="contact.html" class="btn btn-primary" style="font-size:1.05rem;padding:16px 40px;">📋 开始免费扫描</a>
+    </div>
+  </div>
 </section>
 
-<footer class="footer">
-  <div class="footer-inner">
-    <div class="footer-grid">
-      <div class="footer-brand"><h3>联结者<span>L/NKERS</span></h3><p>联结者（广州）企业服务有限公司</p></div>
-      <div class="footer-col"><h4>服务</h4><a href="services.html">企业生命诊断</a><a href="services.html">企业基础陪伴</a><a href="services.html">企业深度共建</a><a href="services.html">联结宇宙伙伴</a></div>
-      <div class="footer-col"><h4>了解更多</h4><a href="about.html">关于我们</a><a href="methodology.html">方法论</a><a href="cases.html">案例</a><a href="insights.html">洞察</a></div>
-      <div class="footer-col"><h4>联结宇宙</h4><a href="community.html">加入联结宇宙</a><a href="contact.html">合作申请</a></div>
-    </div>
-    <div class="footer-bottom">© 2026 联结者（广州）企业服务有限公司 · 领客思 L/NKERS</div>
+<footer class="footer"><div class="footer-inner">
+  <div class="footer-grid">
+    <div class="footer-brand"><h3>L/NKERS <span>联结者</span></h3><p>联结者（广州）企业服务有限公司</p></div>
+    <div class="footer-col"><h4>服务</h4><a href="services.html">按场景选产品</a><a href="services.html#matrix">产品矩阵</a><a href="contact.html">免费诊断</a></div>
+    <div class="footer-col"><h4>了解更多</h4><a href="methodology.html">方法论</a><a href="cases.html">案例</a></div>
+    <div class="footer-col"><h4>联结宇宙</h4><a href="community.html">加入联结宇宙</a><a href="contact.html">合作申请</a></div>
   </div>
-</footer>
-<script>
-document.getElementById('navToggle').addEventListener('click', function() {
-  document.getElementById('navLinks').classList.toggle('open');
-});
-</script>
+  <div class="footer-bottom">© 2026 联结者（广州）企业服务有限公司 · 领客思 L/NKERS</div>
+</div></footer>
+<script src="js/main.js"></script>
 </body>
 </html>
