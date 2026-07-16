@@ -3,93 +3,117 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="联结宇宙 — 联结者会员生态，发现人生愿景，连接同频的人，共创未来生活方式。">
   <title>联结宇宙 · 联结者 L/NKERS</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css">
+  <meta name="description" content="联结宇宙—联结者会员生态，发现人生愿景，连接同频的人，共创未来生活方式。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<nav class="nav">
-  <div class="nav-inner">
-    <a href="/" class="nav-logo">联结者<span>L/NKERS</span></a>
-    <div class="nav-links" id="navLinks">
-      <a href="about.html">关于</a><a href="services.html">服务与产品</a><a href="methodology.html">方法论</a><a href="cases.html">案例</a><a href="community.html">联结宇宙</a><a href="insights.html">洞察</a><a href="contact.html" class="nav-cta">预约诊断</a>
-    </div>
-    <button class="nav-toggle" id="navToggle" aria-label="菜单"><span></span><span></span><span></span></button>
+<canvas id="bg-canvas"></canvas>
+
+<nav class="nav"><div class="nav-inner">
+  <a href="index.html" class="logo">L/NKERS <span>联结者</span></a>
+  <div class="nav-links" id="navLinks">
+    <a href="services.html">服务</a>
+    <a href="methodology.html">方法论</a>
+    <a href="cases.html">案例</a>
+    <a href="community.html">联结宇宙</a>
+    <a href="contact.html" class="nav-cta">免费诊断</a>
   </div>
-</nav>
+  <button class="hamburger" id="hamToggle" aria-label="菜单"><span></span><span></span><span></span></button>
+</div></nav>
 
 <section class="page-header">
   <div class="container">
-    <h1>联结宇宙</h1>
-    <p>你不是消费者。你是生命共创者。</p>
+    <div class="breadcrumb"><a href="index.html">首页</a> / <span>联结宇宙</span></div>
+    <h1>联结宇宙 · <span class="grad">生命共创者网络</span></h1>
+    <p>你不是消费者，你是生命共创者。发现人生愿景，连接同频的人，体验未来的生活方式。</p>
   </div>
 </section>
 
 <section class="section">
   <div class="container">
-    <div style="max-width:700px;margin:0 auto 48px;text-align:center;">
+    <div class="reveal" style="max-width:700px;margin:0 auto 48px;text-align:center;">
       <div style="font-size:3rem;margin-bottom:16px;">🌌</div>
-      <h2 style="font-size:1.6rem;margin-bottom:12px;">发现你的生命愿景，连接同频的人，体验未来的生活方式</h2>
-      <p style="color:var(--gray-500);">联结宇宙不是一个会员制平台，不是社群，不是课程平台。联结宇宙是一个「生命共创者网络」。在这里，你不再是消费者，而是生命样本、愿景节点、价值贡献者。</p>
+      <h2 style="font-size:1.5rem;margin-bottom:12px;">联结宇宙不是会员制平台，不是社群，不是课程平台。</h2>
+      <p style="color:var(--text-dim);">联结宇宙是一个<span style="color:var(--gold);font-weight:600;">生命共创者网络</span>。在这里，你不再是消费者，而是生命样本、愿景节点、价值贡献者。你的需求定义未来产品方向，你的经验可以帮助他人，你的梦想可能成为下一个项目。</p>
     </div>
 
-    <h3 style="text-align:center;margin-bottom:24px;">谁在加入联结宇宙</h3>
-    <div class="member-grid" style="margin-bottom:48px;">
-      <div class="member-card"><div class="member-icon">🌟</div><h4>愿景创造者</h4><p>创业者、企业主</p><p style="font-size:0.75rem;color:var(--gray-500);">有强烈愿景，正在创造事业</p><div class="member-count">20人</div></div>
-      <div class="member-card"><div class="member-icon">💡</div><h4>价值贡献者</h4><p>设计师、咨询师、教练</p><p style="font-size:0.75rem;color:var(--gray-500);">拥有专业能力，希望创造更大价值</p><div class="member-count">30人</div></div>
-      <div class="member-card"><div class="member-icon">🌱</div><h4>成长探索者</h4><p>年轻职场、转型者</p><p style="font-size:0.75rem;color:var(--gray-500);">正在寻找方向，需要同频伙伴</p><div class="member-count">30人</div></div>
-      <div class="member-card"><div class="member-icon">🔗</div><h4>资源连接者</h4><p>企业主、行业领袖</p><p style="font-size:0.75rem;color:var(--gray-500);">拥有资源，希望产生社会价值</p><div class="member-count">20人</div></div>
+    <h3 style="text-align:center;margin-bottom:24px;font-size:1.2rem;" class="reveal">四种生态位</h3>
+    <div class="member-grid reveal">
+      <div class="member-card"><div class="member-icon">🌟</div><h4>愿景创造者</h4><p>创业者·企业主</p><div class="member-count">20席</div></div>
+      <div class="member-card"><div class="member-icon">💡</div><h4>价值贡献者</h4><p>设计师·咨询师·教练</p><div class="member-count">30席</div></div>
+      <div class="member-card"><div class="member-icon">🌱</div><h4>成长探索者</h4><p>年轻职场·转型者</p><div class="member-count">30席</div></div>
+      <div class="member-card"><div class="member-icon">🔗</div><h4>资源连接者</h4><p>行业领袖·投资人</p><div class="member-count">20席</div></div>
     </div>
 
-    <h3 style="text-align:center;margin-bottom:24px;">会员成长路径</h3>
-    <div class="flow-steps" style="margin-bottom:48px;">
-      <div class="flow-step"><h4>连接者</h4><p>认识自己，完成《个人生命地图》</p></div>
-      <div class="flow-step"><h4>共创者</h4><p>参与活动、企业体验、项目连接</p></div>
-      <div class="flow-step"><h4>创造者</h4><p>提出愿景项目，获得生态支持</p></div>
-      <div class="flow-step"><h4>生态节点</h4><p>成为导师、伙伴、企业连接点</p></div>
-    </div>
-
-    <h3 style="text-align:center;margin-bottom:24px;">近期活动</h3>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-bottom:40px;">
-      <div style="background:var(--off-white);padding:20px;border-radius:var(--radius);">
-        <div style="font-size:0.8rem;color:var(--orange);font-weight:600;">定期举办</div>
-        <h4 style="margin:4px 0;">愿景夜谈</h4>
-        <p style="font-size:0.85rem;color:var(--gray-500);">「如果没有限制，你想创造怎样的人生？」— 深度对话，发现彼此的愿景。</p>
+    <h3 style="text-align:center;margin:48px 0 24px;font-size:1.2rem;" class="reveal">会员成长路径</h3>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;counter-reset:step;" class="reveal">
+      <div style="background:var(--bg-card);backdrop-filter:blur(12px);border:1px solid var(--glass-edge);border-radius:12px;padding:24px;flex:1;min-width:140px;max-width:200px;text-align:center;">
+        <div style="width:32px;height:32px;line-height:32px;background:var(--orange);color:#0f0b09;border-radius:50%;font-weight:700;font-size:0.85rem;margin:0 auto 12px;">1</div>
+        <h4 style="font-size:0.9rem;">连接者</h4>
+        <p style="font-size:0.75rem;color:var(--text-dim);">认识自己，完成《个人生命地图》</p>
       </div>
-      <div style="background:var(--off-white);padding:20px;border-radius:var(--radius);">
-        <div style="font-size:0.8rem;color:var(--orange);font-weight:600;">定期举办</div>
-        <h4 style="margin:4px 0;">企业体验日</h4>
-        <p style="font-size:0.85rem;color:var(--gray-500);">走进联结者生态企业，真实体验产品，提供宝贵反馈。</p>
+      <div style="background:var(--bg-card);backdrop-filter:blur(12px);border:1px solid var(--glass-edge);border-radius:12px;padding:24px;flex:1;min-width:140px;max-width:200px;text-align:center;">
+        <div style="width:32px;height:32px;line-height:32px;background:var(--gold);color:#0f0b09;border-radius:50%;font-weight:700;font-size:0.85rem;margin:0 auto 12px;">2</div>
+        <h4 style="font-size:0.9rem;">共创者</h4>
+        <p style="font-size:0.75rem;color:var(--text-dim);">参与活动、企业体验、项目连接</p>
       </div>
-      <div style="background:var(--off-white);padding:20px;border-radius:var(--radius);">
-        <div style="font-size:0.8rem;color:var(--orange);font-weight:600;">定期举办</div>
-        <h4 style="margin:4px 0;">愿景匹配会</h4>
-        <p style="font-size:0.85rem;color:var(--gray-500);">发现你的同频伙伴：我需要谁？我能帮助谁？</p>
+      <div style="background:var(--bg-card);backdrop-filter:blur(12px);border:1px solid var(--glass-edge);border-radius:12px;padding:24px;flex:1;min-width:140px;max-width:200px;text-align:center;">
+        <div style="width:32px;height:32px;line-height:32px;background:var(--coral);color:#0f0b09;border-radius:50%;font-weight:700;font-size:0.85rem;margin:0 auto 12px;">3</div>
+        <h4 style="font-size:0.9rem;">创造者</h4>
+        <p style="font-size:0.75rem;color:var(--text-dim);">提出愿景项目，获得生态支持</p>
+      </div>
+      <div style="background:var(--bg-card);backdrop-filter:blur(12px);border:1px solid var(--glass-edge);border-radius:12px;padding:24px;flex:1;min-width:140px;max-width:200px;text-align:center;">
+        <div style="width:32px;height:32px;line-height:32px;background:var(--warm-teal);color:#0f0b09;border-radius:50%;font-weight:700;font-size:0.85rem;margin:0 auto 12px;">4</div>
+        <h4 style="font-size:0.9rem;">生态节点</h4>
+        <p style="font-size:0.75rem;color:var(--text-dim);">成为导师、伙伴、企业连接点</p>
       </div>
     </div>
 
-    <div class="text-center">
-      <a href="contact.html" class="btn btn-primary">🌱 申请加入联结宇宙</a>
+    <div style="margin-top:48px;" class="reveal">
+      <h3 style="text-align:center;margin-bottom:24px;font-size:1.2rem;">近期活动</h3>
+      <div class="grid-3">
+        <div class="glass" style="padding:20px;">
+          <div style="font-size:0.8rem;color:var(--gold);font-weight:600;">定期举办</div>
+          <h4 style="margin:4px 0;">愿景夜谈</h4>
+          <p style="font-size:0.85rem;color:var(--text-dim);">「如果没有限制，你想创造怎样的人生？」—深度对话，发现彼此的愿景。</p>
+        </div>
+        <div class="glass" style="padding:20px;">
+          <div style="font-size:0.8rem;color:var(--gold);font-weight:600;">定期举办</div>
+          <h4 style="margin:4px 0;">企业体验日</h4>
+          <p style="font-size:0.85rem;color:var(--text-dim);">走进联结者生态企业，真实体验产品，提供宝贵反馈。</p>
+        </div>
+        <div class="glass" style="padding:20px;">
+          <div style="font-size:0.8rem;color:var(--gold);font-weight:600;">定期举办</div>
+          <h4 style="margin:4px 0;">愿景匹配会</h4>
+          <p style="font-size:0.85rem;color:var(--text-dim);">发现你的同频伙伴：我需要谁？我能帮助谁？</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<footer class="footer">
-  <div class="footer-inner">
-    <div class="footer-grid">
-      <div class="footer-brand"><h3>联结者<span>L/NKERS</span></h3><p>联结者（广州）企业服务有限公司</p></div>
-      <div class="footer-col"><h4>服务</h4><a href="services.html">企业生命诊断</a><a href="services.html">企业基础陪伴</a><a href="services.html">企业深度共建</a><a href="services.html">联结宇宙伙伴</a></div>
-      <div class="footer-col"><h4>了解更多</h4><a href="about.html">关于我们</a><a href="methodology.html">方法论</a><a href="cases.html">案例</a><a href="insights.html">洞察</a></div>
-      <div class="footer-col"><h4>联结宇宙</h4><a href="community.html">加入联结宇宙</a><a href="contact.html">合作申请</a></div>
+<section class="section">
+  <div class="container">
+    <div class="cta-banner reveal">
+      <h2>加入联结宇宙</h2>
+      <p>填写申请表 → 联结者团队审核 → 邀请参加愿景夜谈</p>
+      <a href="contact.html" class="btn btn-primary" style="font-size:1.05rem;padding:16px 40px;">🌱 申请加入</a>
     </div>
-    <div class="footer-bottom">© 2026 联结者（广州）企业服务有限公司 · 领客思 L/NKERS</div>
   </div>
-</footer>
-<script>
-document.getElementById('navToggle').addEventListener('click', function() {
-  document.getElementById('navLinks').classList.toggle('open');
-});
-</script>
+</section>
+
+<footer class="footer"><div class="footer-inner">
+  <div class="footer-grid">
+    <div class="footer-brand"><h3>L/NKERS <span>联结者</span></h3><p>联结者（广州）企业服务有限公司</p></div>
+    <div class="footer-col"><h4>服务</h4><a href="services.html">按场景选产品</a><a href="services.html#matrix">产品矩阵</a><a href="contact.html">免费诊断</a></div>
+    <div class="footer-col"><h4>了解更多</h4><a href="methodology.html">方法论</a><a href="cases.html">案例</a></div>
+    <div class="footer-col"><h4>联结宇宙</h4><a href="community.html">加入联结宇宙</a><a href="contact.html">合作申请</a></div>
+  </div>
+  <div class="footer-bottom">© 2026 联结者（广州）企业服务有限公司 · 领客思 L/NKERS</div>
+</div></footer>
+<script src="js/main.js"></script>
 </body>
 </html>
